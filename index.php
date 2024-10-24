@@ -12,9 +12,9 @@
 
         <nav>
             <a href="index.php">Inicio</a>
-            <a href="php/login.php">Iniciar Sesion</a>
+            <a href="login.php">Iniciar Sesion</a>
             <a href="dashboard.php">Panel</a>
-            <a href="php/register.php">Resistrarse</a>
+            <a href="register.php">Resistrarse</a>
         
 
         </nav>
