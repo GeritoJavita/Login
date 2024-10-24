@@ -12,8 +12,9 @@
 
         <nav>
             <a href="index.php">Inicio</a>
-            <a href="Login.php">Contacto</a>
-            <a href="dashboard.php">Blog</a>
+            <a href="php/login.php">Iniciar Sesion</a>
+            <a href="dashboard.php">Panel</a>
+            <a href="php/register.php">Resistrarse</a>
         
 
         </nav>
