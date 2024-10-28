@@ -1,31 +1,19 @@
 <?php
 session_start();
-include ("php/database.php");
 
-if (!isset($_SESSION['user']) || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit();
 }
 
-$result = $conn->query("SELECT username FROM users");
-
+if ($_SESSION['role'] == 'admin') {
+    header('Location: admin_dashboard.php');
+    exit();
+} elseif ($_SESSION['role'] == 'user') {
+    header('Location: user_dashboard.php');
+    exit();
+} else {
+    echo "Rol de usuario no reconocido.";
+    exit();
+}
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-<body>
-    <h2>Bienvenido al Dashboard</h2>
-    <h3>Usuarios Registrados:</h3>
-    <ul>
-        <?php while ($row = $result->fetch_assoc()) { ?>
-            <li><?= $row['username'] ?></li>
-        <?php } ?>
-    </ul>
-    <a href="logout.php">Cerrar Sesión</a>
-</body>
-</html>

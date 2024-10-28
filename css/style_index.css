@@ -1,0 +1,101 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #2b6777;
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar .logo a {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #a1cae2;
+}
+
+.main-content {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.welcome-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #2b6777;
+}
+
+.welcome-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #52ab98;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #3c8d76;
+}
+
+footer {
+    background-color: #2b6777;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
