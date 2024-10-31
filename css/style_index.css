@@ -1,101 +1,191 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Global Styles */
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
     color: #333;
-    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 header {
-    background-color: #2b6777;
-    padding: 10px 0;
-}
-
-.navbar {
+    background-color: #222;
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    color: #fff;
 }
 
-.navbar .logo a {
-    color: #fff;
-    font-size: 24px;
+.logo a {
+    color: #ffcc00;
+    font-size: 1.5rem;
     font-weight: bold;
-    text-decoration: none;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
+    gap: 20px;
 }
 
 .nav-links li {
-    margin-left: 20px;
+    display: inline;
 }
 
-.nav-links a {
+.nav-links li a {
     color: #fff;
-    text-decoration: none;
-    font-weight: 500;
+    font-size: 1.1rem;
     transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: #a1cae2;
+.nav-links li a:hover {
+    color: #ffcc00;
 }
 
+/* Main Content */
 .main-content {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.welcome-section {
     text-align: center;
-    padding: 60px 20px;
+    margin-bottom: 50px;
 }
 
 .welcome-section h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #2b6777;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #444;
 }
 
 .welcome-section p {
-    font-size: 18px;
+    font-size: 1.2rem;
+    color: #666;
     margin-bottom: 30px;
-    color: #555;
 }
 
 .cta-btn {
     display: inline-block;
-    padding: 12px 25px;
-    background-color: #52ab98;
-    color: #fff;
-    font-size: 16px;
+    padding: 15px 30px;
+    background-color: #ffcc00;
+    color: #222;
+    font-size: 1.1rem;
+    border-radius: 5px;
     font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 25px;
-    text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
 .cta-btn:hover {
-    background-color: #3c8d76;
+    background-color: #e6b800;
 }
 
-footer {
-    background-color: #2b6777;
+/* Productos Destacados */
+.productos-destacados {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.productos-destacados h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.producto {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.producto h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.producto p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Sección Sobre Nosotros */
+.sobre-nosotros {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sobre-nosotros h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.sobre-nosotros p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Footer */
+.footer {
+    background-color: #222;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
+    padding: 20px;
 }
 
-footer p {
+.footer p {
     margin: 0;
-    font-size: 14px;
+}
+
+.social-media {
+    margin-top: 15px;
+}
+
+.social-media a {
+    margin: 0 10px;
+}
+
+.social-media img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-media img:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid-productos {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-section h1 {
+        font-size: 2rem;
+    }
+
+    .welcome-section p {
+        font-size: 1rem;
+    }
 }
