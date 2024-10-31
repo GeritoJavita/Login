@@ -10,9 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("sss", $username, $password, $role);
 
     if ($stmt->execute()) {
-        echo "Usuario agregado correctamente";
+        $success = "Usuario registrado correctamente";
     } else {
-        echo "Error al agregar el usuario: " . $stmt->error;
+        $error = "Error al registrar el usuario: " . $stmt->error;
     }
 }
 ?>
@@ -21,16 +21,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Registro - GYM | BRO</title>
     <link rel="stylesheet" href="css/styles_global.css">
+    <link rel="stylesheet" href="css/style_register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h2>Registro</h2>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Usuario" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button type="submit">Registrarse</button>
-        <button type="button"><a href="index.php">Volver Inicio</a></button>
-    </form>
+    <div class="register-container">
+        <div class="register-box">
+            <h2>Registro</h2>
+            <form method="POST" class="register-form">
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="Usuario" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="register-btn">Registrarse</button>
+                <button type="button" class="back-btn"><a href="index.php">Volver Inicio</a></button>
+            </form>
+            <?php
+            if (isset($success)) {
+                echo "<p class='success-msg'>$success</p>";
+            } elseif (isset($error)) {
+                echo "<p class='error-msg'>$error</p>";
+            }
+            ?>
+        </div>
+    </div>
 </body>
 </html>

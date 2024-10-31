@@ -31,16 +31,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - GYM | BRO</title>
     <link rel="stylesheet" href="css/styles_global.css">
+    <link rel="stylesheet" href="css/style_login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Usuario" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button type="submit">Login</button>
-    </form>
-    <?php if (isset($error)) echo "<p>$error</p>"; ?>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Iniciar Sesión</h2>
+            <form method="POST" class="login-form">
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="Usuario" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="login-btn">Ingresar</button>
+            </form>
+            <?php if (isset($error)) echo "<p class='error-msg'>$error</p>"; ?>
+            <p class="register-link">¿No tienes cuenta? <a href="register.php">Regístrate aquí</a></p>
+        </div>
+    </div>
 </body>
 </html>
