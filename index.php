@@ -50,7 +50,7 @@ if ($result->num_rows > 0) {
             <div class="grid-productos">
                 <?php foreach ($productos as $producto): ?>
                     <div class="producto">
-                        <img src="img/cr7.jpg" alt="<?php echo $producto['nombre']; ?>">
+                        <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
                         <h3><?php echo $producto['nombre']; ?></h3>
                         <p>Precio: $<?php echo $producto['precio']; ?></p>
                     </div>
