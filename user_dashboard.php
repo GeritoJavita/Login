@@ -11,7 +11,21 @@ if (!isset($_SESSION['user']) || $_SESSION['role'] !== 'user') {
 // Obtener datos del usuario si es necesario
 $user = $_SESSION['user'];
 
+
+
 // Aquí puedes añadir más consultas a la base de datos para obtener productos, historial, etc.
+
+
+// Consulta para obtener todos los productos
+$query = "SELECT * FROM productos";
+$result = $conn->query($query);
+$productos = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $productos[] = $row;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -48,22 +62,13 @@ $user = $_SESSION['user'];
         <section class="productos-destacados">
             <h2>Productos Destacados</h2>
             <div class="grid-productos">
-                <!-- Ejemplo de productos destacados, puedes hacer un loop PHP aquí si los productos vienen de la base de datos -->
-                <div class="producto">
-                    <img src="img/mancuernas.jpg" alt="Mancuernas">
-                    <h3>Mancuernas 10kg</h3>
-                    <p>Precio: $25</p>
-                </div>
-                <div class="producto">
-                    <img src="img/cinta_correr.jpg" alt="Cinta de correr">
-                    <h3>Cinta de correr</h3>
-                    <p>Precio: $150</p>
-                </div>
-                <div class="producto">
-                    <img src="img/ropa.jpg" alt="Ropa deportiva">
-                    <h3>Ropa deportiva</h3>
-                    <p>Precio: $20</p>
-                </div>
+                <?php foreach ($productos as $producto): ?>
+                    <div class="producto">
+                        <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
+                        <h3><?php echo $producto['nombre']; ?></h3>
+                        <p>Precio: $<?php echo $producto['precio']; ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </section>
 

@@ -5,6 +5,7 @@ include('php/database.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    
 
     $stmt = $conn->prepare("SELECT * FROM usuarios WHERE username = ?");
     $stmt->bind_param("s", $username);
@@ -15,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $user['username'];
         $_SESSION['role'] = $user['role'];
+        $_SESSION['id'] = $user['id'];
         if ($user['role'] == 'admin') {
             header('Location: admin_dashboard.php');
         } else {
@@ -32,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - GYM | BRO</title>
-    <link rel="stylesheet" href="css/styles_global.css">
+        
     <link rel="stylesheet" href="css/style_login.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>

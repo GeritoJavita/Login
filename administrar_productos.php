@@ -10,11 +10,13 @@ $result = $conn->query("SELECT * FROM productos");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Productos</title>
-    <link rel="stylesheet" href="css/crud_productos.css">
+    <link rel="stylesheet" href="css/admin_producto.css">
 </head>
 <body>
     <div class="container">
         <h2>Listado de Productos</h2>
+      
+       
         <table>
             <thead>
                 <tr>
@@ -36,12 +38,14 @@ $result = $conn->query("SELECT * FROM productos");
                     <td><?php echo $producto['stock']; ?></td>
                     <td>
                         <a href="editar_producto.php?id=<?php echo $producto['id']; ?>">Editar</a> |
-                        <a href="eliminar_producto.php?id=<?php echo $producto['id']; ?>" onclick="return confirm('¿Seguro que deseas eliminar este producto?')">Eliminar</a>
+                        <a href="eliminar_producto.php?id=<?php echo $producto['id']; ?>"  class="delete-btn" onclick="return confirm('¿Seguro que deseas eliminar este producto?')">Eliminar</a>
                     </td>
                 </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
+        <a href="admin_dashboard.php" class="add-btn"> Volver Inicio</a>
+
         <a href="agregar_producto.php">Agregar Nuevo Producto</a>
     </div>
 </body>

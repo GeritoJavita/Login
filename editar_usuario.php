@@ -1,5 +1,11 @@
 <?php
 include('php/database.php');
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header("Location: login.php");
+    exit();
+}
 
 $id = $_GET['id'];
 
@@ -23,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($stmt->execute()) {
-        header('Location: administrar_usuarios.php');
+        header('Location: perfil.php'); // Redirigir a perfil.php
         exit();
     } else {
         $error = "Error al actualizar el usuario";
@@ -43,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h2>Editar Usuario</h2>
         <form method="POST">
             <div class="form-group">
-                <input type="text" name="username" value="<?= $user['username'] ?>" required>
+                <input type="text" name="username" value="<?= htmlspecialchars($user['username']) ?>" required>
             </div>
             <div class="form-group">
                 <input type="password" name="password" placeholder="Nueva Contraseña (opcional)">
