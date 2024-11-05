@@ -8,6 +8,12 @@ CREATE TABLE usuarios(
 
 CREATE TABLE productos(
 
+		id Primaria	int(11)		AUTO_INCREMENT	PRIMARY KEY,				
+		nombre	varchar(100)		No	NULL,		
+		descripcion	text			No	NULL,			
+		precio	decimal(10,2)		No	NULL,			
+		stock	int(11)			    No	NULL,		
+		imagen	varchar(255)			NULL		
 
 
 );
