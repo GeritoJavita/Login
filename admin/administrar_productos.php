@@ -37,16 +37,16 @@ $result = $conn->query("SELECT * FROM productos");
                     <td><?php echo $producto['precio']; ?></td>
                     <td><?php echo $producto['stock']; ?></td>
                     <td>
-                        <a href="editar_producto.php?id=<?php echo $producto['id']; ?>">Editar</a> |
-                        <a href="eliminar_producto.php?id=<?php echo $producto['id']; ?>"  class="delete-btn" onclick="return confirm('¿Seguro que deseas eliminar este producto?')">Eliminar</a>
+                        <a href="../crud_productos/editar_producto.php?id=<?php echo $producto['id']; ?>">Editar</a> |
+                        <a href="../crud_productos/eliminar_producto.php?id=<?php echo $producto['id']; ?>"  class="delete-btn" onclick="return confirm('¿Seguro que deseas eliminar este producto?')">Eliminar</a>
                     </td>
                 </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
-        <a href="admin_dashboard.php" class="add-btn"> Volver Inicio</a>
+        <a href="../admin/admin_dashboard.php" class="add-btn"> Volver Inicio</a>
 
-        <a href="agregar_producto.php">Agregar Nuevo Producto</a>
+        <a href="../crud_productos/agregar_producto.php">Agregar Nuevo Producto</a>
     </div>
 </body>
 </html>

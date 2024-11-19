@@ -1,5 +1,5 @@
 <?php
-include('php/database.php');
+include('../php/database.php');
 
 $id = $_GET['id'];
 $stmt = $conn->prepare("SELECT * FROM productos WHERE id = ?");
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ssdisi", $nombre, $descripcion, $precio, $stock, $imagen, $id);
 
     if ($stmt->execute()) {
-        header('Location: administrar_productos.php');
+        header('Location: ../admin/administrar_productos.php');
         exit();
     } else {
         $error = "Error al actualizar el producto";
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Producto</title>
-    <link rel="stylesheet" href="css/crud_productos.css">
+    <link rel="stylesheet" href="../css/crud_productos.css">
 </head>
 <body>
     <div class="container">

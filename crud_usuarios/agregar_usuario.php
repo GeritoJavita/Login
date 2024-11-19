@@ -1,5 +1,5 @@
 <?php
-include('php/database.php');
+include('../php/database.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("sss", $username, $password, $role);
 
     if ($stmt->execute()) {
-        header('Location: administrar_usuarios.php');
+        header('Location: ../admin/administrar_usuarios.php');
         exit();
     } else {
         $error = "Error al agregar el usuario";
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Usuario</title>
-    <link rel="stylesheet" href="css/crud_usuarios.css">
+    <link rel="stylesheet" href="../css/crud_usuarios.css">
 </head>
 <body>
    
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </select>
             </div>
             <button type="submit">Agregar Usuario</button>
-            <a href="administrar_usuarios.php">Volver a Administración de Usuarios</a>
+            
         </form>
     </div>
 </body>

@@ -1,5 +1,5 @@
 <?php
-include('php/database.php');
+include('../php/database.php');
 session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recibir datos del formulario
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Ejecutar la consulta
     if ($stmt->execute()) {
-        header('Location: administrar_productos.php');
+        header('Location: ../admin/administrar_productos.php');
         exit();
     } else {
         $error = "Error al agregar el producto";
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Producto</title>
-    <link rel="stylesheet" href="css/styles_global.css">
+    <link rel="stylesheet" href="../css/crud_productos.css">
 </head>
 <body>
     <div class="container">

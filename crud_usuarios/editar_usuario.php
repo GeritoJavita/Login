@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($stmt->execute()) {
-        header('Location: ../user/perfil.php'); // Redirigir a perfil.php
+        header('Location: ../admin/administrar_usuarios.php'); 
         exit();
     } else {
         $error = "Error al actualizar el usuario";
