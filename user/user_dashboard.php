@@ -51,10 +51,13 @@ if ($result->num_rows > 0) {
             </ul>
 
             <!-- Ícono del carrito con contador -->
+            <?php
+$carrito_count = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
+?>
             <div class="navbar-icons">
-    <a href="carrito.php" class="cart-icon">
+    <a href="../carrito/carrito.php" class="cart-icon">
         <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count">0</span> <!-- Aquí se actualizará dinámicamente el número de productos -->
+        <span class="cart-count"><?php echo $carrito_count; ?></span> <!-- Aquí se actualizará dinámicamente el número de productos -->
     </a>
     <span class="user-welcome">Hola, <?php echo htmlspecialchars($user); ?></span>
 </div>
@@ -72,19 +75,22 @@ if ($result->num_rows > 0) {
 
         <!-- Sección de productos destacados -->
         <section class="productos-destacados">
-            <h2>Productos Destacados</h2>
-            <div class="grid-productos">
-                <?php foreach ($productos as $producto): ?>
-                    <div class="producto">
-                        <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
-                        <h3><?php echo $producto['nombre']; ?></h3>
-                        <p>Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
-                        <a href="detalle_producto.php?id=<?php echo $producto['id']; ?>" class="cta-btn">Ver Detalles</a>
-                        <button class="add-to-cart-btn">Añadir al Carrito</button>
-                    </div>
-                <?php endforeach; ?>
+    <h2>Productos Destacados</h2>
+    <div class="grid-productos">
+        <?php foreach ($productos as $producto): ?>
+            <div class="producto">
+                <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
+                <h3><?php echo $producto['nombre']; ?></h3>
+                <p>Precio: $<?php echo $producto['precio']; ?></p>
+                <form action="../carrito/agregar_carrito.php" method="POST">
+                    <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
+                    <button type="submit" class="cta-btn">Agregar al Carrito</button>
+                </form>
             </div>
-        </section>
+        <?php endforeach; ?>
+    </div>
+</section>
+
 
    
     </main>

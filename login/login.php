@@ -5,7 +5,6 @@ include('../php/database.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
 
     $stmt = $conn->prepare("SELECT * FROM usuarios WHERE username = ?");
     $stmt->bind_param("s", $username);
@@ -17,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user'] = $user['username'];
         $_SESSION['role'] = $user['role'];
         $_SESSION['id'] = $user['id'];
+       
+
         if ($user['role'] == 'admin') {
             header('Location: ../admin/admin_dashboard.php');
         } else {
@@ -27,6 +28,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "Usuario o contraseña incorrectos";
     }
 }
+
+// Cargar el carrito solo si el usuario está autenticado
+if (isset($_SESSION['id'])) {
+    // Recupera el carrito de la base de datos para este usuario
+    $user_id = $_SESSION['id'];
+    $sql = "SELECT * FROM carrito WHERE user_id = '$user_id'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $_SESSION['carrito'] = [];
+        while ($producto = mysqli_fetch_assoc($result)) {
+            $_SESSION['carrito'][] = $producto;
+        }
+    } else {
+        echo "No se encontraron productos en el carrito.";
+    }
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
