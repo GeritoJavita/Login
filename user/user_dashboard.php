@@ -8,13 +8,8 @@ if (!isset($_SESSION['user']) || $_SESSION['role'] !== 'user') {
     exit();
 }
 
-// Obtener datos del usuario si es necesario
+// Obtener datos del usuario
 $user = $_SESSION['user'];
-
-
-
-// Aquí puedes añadir más consultas a la base de datos para obtener productos, historial, etc.
-
 
 // Consulta para obtener todos los productos
 $query = "SELECT * FROM productos";
@@ -32,26 +27,42 @@ if ($result->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Usuario - Productos Gimnasio</title>
+    <title>Dashboard de Usuario - GYM | BRO</title>
     <link rel="stylesheet" href="../css/style_gym.css">
     <link rel="stylesheet" href="../css/style_index.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
 
+    <!-- Navbar mejorado -->
     <header>
-        <h1>Bienvenido, <?php echo htmlspecialchars($user); ?></h1>
-        <nav>
-            <ul>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.php">GYM | BRO</a>
+            </div>
+
+            <ul class="nav-links">
                 <li><a href="productos.php">Productos</a></li>
                 <li><a href="carrito.php">Carrito</a></li>
                 <li><a href="../user/perfil.php">Perfil</a></li>
                 <li><a href="../logout.php">Cerrar Sesión</a></li>
             </ul>
+
+            <!-- Ícono del carrito con contador -->
+            <div class="navbar-icons">
+    <a href="carrito.php" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span> <!-- Aquí se actualizará dinámicamente el número de productos -->
+    </a>
+    <span class="user-welcome">Hola, <?php echo htmlspecialchars($user); ?></span>
+</div>
+
         </nav>
     </header>
 
-    
-
+    <!-- Sección de bienvenida -->
     <main class="main-content">
         <section class="welcome-section">
             <h1>Bienvenidos a GYM | BRO</h1>
@@ -59,6 +70,7 @@ if ($result->num_rows > 0) {
             <a href="productos.php" class="cta-btn">Ver Productos</a>
         </section>
 
+        <!-- Sección de productos destacados -->
         <section class="productos-destacados">
             <h2>Productos Destacados</h2>
             <div class="grid-productos">
@@ -66,27 +78,26 @@ if ($result->num_rows > 0) {
                     <div class="producto">
                         <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
                         <h3><?php echo $producto['nombre']; ?></h3>
-                        <p>Precio: $<?php echo $producto['precio']; ?></p>
+                        <p>Precio: $<?php echo number_format($producto['precio'], 2); ?></p>
+                        <a href="detalle_producto.php?id=<?php echo $producto['id']; ?>" class="cta-btn">Ver Detalles</a>
+                        <button class="add-to-cart-btn">Añadir al Carrito</button>
                     </div>
                 <?php endforeach; ?>
             </div>
         </section>
 
-        <section class="sobre-nosotros">
-            <h2>Sobre Nosotros</h2>
-            <p>Somos una empresa dedicada a ofrecer los mejores productos deportivos para que puedas mantenerte en forma, con una amplia gama de artículos diseñados para cubrir todas tus necesidades de entrenamiento.</p>
-            <a href="sobre_nosotros.php" class="cta-btn">Conoce más</a>
-        </section>
+   
     </main>
 
+    <!-- Footer mejorado -->
     <footer class="footer">
-        <p>&copy; 2024 GYM | BRO. Todos los derechos reservados.</p>
-        <div class="social-media">
-            <a href="#"><img src="img/facebook_icon.png" alt="Facebook"></a>
-            <a href="#"><img src="img/instagram_icon.png" alt="Instagram"></a>
-            <a href="#"><img src="img/twitter_icon.png" alt="Twitter"></a>
-        </div>
-    </footer>
+    <p>&copy; 2024 GYM | BRO. Todos los derechos reservados.</p>
+    <div class="social-media">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+</footer>
 
 
 </body>
