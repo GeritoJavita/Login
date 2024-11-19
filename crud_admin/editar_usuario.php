@@ -1,9 +1,9 @@
 <?php
-include('php/database.php');
+include('../php/database.php');
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    header("Location: login.php");
+    header("Location: ../login/login.php");
     exit();
 }
 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($stmt->execute()) {
-        header('Location: perfil.php'); // Redirigir a perfil.php
+        header('Location: ../user/perfil.php'); // Redirigir a perfil.php
         exit();
     } else {
         $error = "Error al actualizar el usuario";
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuario</title>
-    <link rel="stylesheet" href="css/crud_usuarios.css">
+    <link rel="stylesheet" href="../css/crud_usuarios.css">
 </head>
 <body>
     <div class="container">

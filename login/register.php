@@ -1,5 +1,6 @@
 <?php
-include('php/database.php');
+session_start();
+include('../php/database.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -23,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - GYM | BRO</title>
     <link rel="stylesheet" href="css/styles_global.css">
-    <link rel="stylesheet" href="css/style_register.css">
+    <link rel="stylesheet" href="../css/style_register.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -38,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="password" name="password" placeholder="Contraseña" required>
                 </div>
                 <button type="submit" class="register-btn">Registrarse</button>
-                <button type="button" class="back-btn"><a href="index.php">Volver Inicio</a></button>
+                <button type="button" class="back-btn"><a href="../index.php">Volver Inicio</a></button>
             </form>
             <?php
             if (isset($success)) {

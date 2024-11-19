@@ -26,8 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="css/crud_usuarios.css">
 </head>
 <body>
+   
     <div class="container">
-        <h2>Agregar Usuario</h2>
+        <h2>Agregar Usuario</h2> 
+        
         <form method="POST">
             <div class="form-group">
                 <input type="text" name="username" placeholder="Usuario" required>

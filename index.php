@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
             </div>
             <ul class="nav-links">
                 <li><a href="index.php">Inicio</a></li>
-                <li><a href="login.php">Iniciar Sesión</a></li>
+                <li><a href="./login/login.php">Iniciar Sesión</a></li>
                 <li><a href="dashboard.php">Panel</a></li>
                 <li><a href="register.php">Registrarse</a></li>
             </ul>

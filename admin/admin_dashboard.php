@@ -2,7 +2,7 @@
 
 
 
-include('php/database.php');
+include('../php/database.php');
 
 // Consulta para obtener todos los productos
 $query = "SELECT * FROM productos";
@@ -22,8 +22,8 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador - Dashboard</title>
-    <link rel="stylesheet" href="css/style_admin.css">
-    <link rel="stylesheet" href="css/style_index.css">
+    <link rel="stylesheet" href="../css/style_admin.css">
+    <link rel="stylesheet" href="../css/style_index.css">
 </head>
 <body>
 
@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
         <ul>
             <li><a href="administrar_productos.php">Administrar Productos</a></li>
             <li><a href="administrar_usuarios.php">Administrar Usuarios</a></li>
-            <li><a href="logout.php">Cerrar Sesión</a></li>
+            <li><a href="../logout.php">Cerrar Sesión</a></li>
         </ul>
     </nav>
 </header>
@@ -47,6 +47,8 @@ if ($result->num_rows > 0) {
             <a href="productos.php" class="cta-btn">Ver Productos</a>
         </section>
 
+        <!--  Logica para recorrer cada producto existente en la base de datos-->
+        
         <section class="productos-destacados">
             <h2>Productos Destacados</h2>
             <div class="grid-productos">

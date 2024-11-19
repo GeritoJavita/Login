@@ -1,10 +1,10 @@
 <?php
 session_start();
-include("php/database.php");
+include("../php/database.php");
 
 // Verificación de sesión y rol
 if (!isset($_SESSION['user']) || $_SESSION['role'] !== 'user') {
-    header('Location: login.php');
+    header('Location: ../login/login.php');
     exit();
 }
 
@@ -33,8 +33,8 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Usuario - Productos Gimnasio</title>
-    <link rel="stylesheet" href="css/style_gym.css">
-    <link rel="stylesheet" href="css/style_index.css">
+    <link rel="stylesheet" href="../css/style_gym.css">
+    <link rel="stylesheet" href="../css/style_index.css">
 </head>
 <body>
 
@@ -44,8 +44,8 @@ if ($result->num_rows > 0) {
             <ul>
                 <li><a href="productos.php">Productos</a></li>
                 <li><a href="carrito.php">Carrito</a></li>
-                <li><a href="perfil.php">Perfil</a></li>
-                <li><a href="logout.php">Cerrar Sesión</a></li>
+                <li><a href="../user/perfil.php">Perfil</a></li>
+                <li><a href="../logout.php">Cerrar Sesión</a></li>
             </ul>
         </nav>
     </header>

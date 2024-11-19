@@ -7,10 +7,10 @@ if (!isset($_SESSION['user'])) {
 }
 
 if ($_SESSION['role'] == 'admin') {
-    header('Location: admin_dashboard.php');
+    header('Location: ../admin/admin_dashboard.php');
     exit();
 } elseif ($_SESSION['role'] == 'user') {
-    header('Location: user_dashboard.php');
+    header('Location: ../user/user_dashboard.php');
     exit();
 } else {
     echo "Rol de usuario no reconocido.";

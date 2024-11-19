@@ -1,5 +1,5 @@
 <?php
-include('php/database.php');
+include('../php/database.php');
 
 $result = $conn->query("SELECT * FROM productos");
 ?>
@@ -10,7 +10,7 @@ $result = $conn->query("SELECT * FROM productos");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Productos</title>
-    <link rel="stylesheet" href="css/admin_producto.css">
+    <link rel="stylesheet" href="../css/admin_producto.css">
 </head>
 <body>
     <div class="container">

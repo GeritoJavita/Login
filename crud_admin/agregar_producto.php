@@ -1,6 +1,6 @@
 <?php
 include('php/database.php');
-
+session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recibir datos del formulario
     $nombre = $_POST['nombre'];

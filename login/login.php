@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('php/database.php');
+include('../php/database.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -18,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['role'] = $user['role'];
         $_SESSION['id'] = $user['id'];
         if ($user['role'] == 'admin') {
-            header('Location: admin_dashboard.php');
+            header('Location: ../admin/admin_dashboard.php');
         } else {
-            header('Location: user_dashboard.php');
+            header('Location: ../user/user_dashboard.php');
         }
         exit;
     } else {
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - GYM | BRO</title>
         
-    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="../css/style_login.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>

@@ -19,7 +19,7 @@ $result = $conn->query("SELECT * FROM usuarios");
     <title>Administrar Usuarios</title>
    
     <link rel="stylesheet" href="css/admin_usuarios.css">
-    <link rel="stylesheet" href="css/style_index.css">
+    
     
 </head>
 <body>
