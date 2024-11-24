@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,12 +13,18 @@
 
 <?php
 include('php/database.php');
-
-// Consulta para obtener todos los productos
+/* Consulta para obtener todos los producto 
+ los almacena en un arreglo*/
 $query = "SELECT * FROM productos";
 $result = $conn->query($query);
 $productos = [];
 
+/*Se recorre con un ciclo cada uno de los atributos que 
+    La tabla en la base de datos maneja
+  */
+/* El index principal debe ser una pagina web comoda para el usuario de entrada. 
+    Debe contener el navegador comun y corriente, secciones esteticas que mantengan la esencia
+    de la pagina web. */
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $productos[] = $row;

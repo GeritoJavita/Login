@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../php/database.php");
 
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['user'])) {
@@ -7,8 +8,20 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-// Obtener el carrito de la sesión
-$carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
+// Obtener el ID del usuario
+$user_id = $_SESSION['id'];
+
+// Recuperar los productos del carrito desde la base de datos
+$query = "SELECT p.nombre, p.precio, p.imagen, c.cantidad, c.producto_id FROM carrito c INNER JOIN productos p ON c.producto_id = p.id WHERE c.usuario_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$carrito = [];
+while ($row = $result->fetch_assoc()) {
+    $carrito[] = $row;
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +34,6 @@ $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
     <link rel="stylesheet" href="../css/style_index.css">
 </head>
 <body>
-
     <header>
         <nav>
             <ul>
@@ -56,7 +68,7 @@ $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
                             <td>$<?php echo $item['precio'] * $item['cantidad']; ?></td>
                             <td>
                                 <form action="eliminar_carrito.php" method="POST">
-                                    <input type="hidden" name="producto_id" value="<?php echo $item['id']; ?>">
+                                    <input type="hidden" name="producto_id" value="<?php echo $item['producto_id']; ?>">
                                     <button type="submit">Eliminar</button>
                                 </form>
                             </td>
